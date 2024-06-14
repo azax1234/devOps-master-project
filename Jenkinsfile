@@ -79,8 +79,8 @@ pipeline {
 				}
 			}
 		}
-	// If you are running on a docker container as node, at the end of the pipeline,
-	// the container will be stopped. So no point running the container image that you just built 
+	// You can actualy run the image as well. need to have docker installed in the node
+	
 	 	stage('Run Docker Image') {
 			steps {
 				sh "docker run -d -p 8075:8075 azax1234/spring-boot-app:0.0.0.${BUILD_NUMBER}"
