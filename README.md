@@ -25,5 +25,5 @@ cd sonarqube-9.4.0.54424/bin/linux-x86-64/
 su sonarcube
 ./sonar.sh start
 
-### Sonar UI will start on port 9000. default user is admin:admin
-### To auhenticate sonar server in Jenkins, create a token under my accounts->security in sonar and add as a secret text with id 'sonar' in jenkins
+ Sonar UI will start on port 9000. default user is admin:admin
+ To auhenticate sonar server in Jenkins, create a token under my accounts->security in sonar and add as a secret text with id 'sonar' in jenkins
