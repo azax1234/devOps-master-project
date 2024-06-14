@@ -81,11 +81,11 @@ pipeline {
 		}
 	// If you are running on a docker container as node, at the end of the pipeline,
 	// the container will be stopped. So no point running the container image that you just built 
-	/* 	stage('Run Docker Image') {
+	 	stage('Run Docker Image') {
 			steps {
 				sh "docker run -d -p 5070:5070 azax1234/ekart:0.0.0.${BUILD_NUMBER}"
 			}
-			}*/
+			}
 		
 	} 
 	 
