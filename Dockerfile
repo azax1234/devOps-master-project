@@ -1,4 +1,4 @@
-FROM openjdk:8u151-jdk-alpine3.7
+FROM adoptopenjdk/openjdk11:alpine-jre
 
 EXPOSE 8075
 ARG artifact=target/spring-boot-web.jar
