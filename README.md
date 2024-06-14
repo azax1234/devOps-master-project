@@ -14,9 +14,11 @@ The Spring boot app runs on port 8075 as defined in src/main/resources/applicati
 1. Docker - ansible playbook
 2. jenkins - ansible playbook
 3. sonarqube - dont use ansible playbook, use below
-`
-sudo apt install unzip
-sudo adduser sonarqube #this will prompt for crating password
+
+adduser command will prompt fro creating password
+
+`sudo apt install unzip
+sudo adduser sonarqube 
 wget https://binaries.sonarsource.com/Distribution/sonarqube/sonarqube-9.4.0.54424.zip
 unzip *
 chmod -R 755 sonarqube-9.4.0.54424
