@@ -83,7 +83,7 @@ pipeline {
 	// the container will be stopped. So no point running the container image that you just built 
 	 	stage('Run Docker Image') {
 			steps {
-				sh "docker run -d -p 5070:5070 azax1234/spring-boot-app:0.0.0.${BUILD_NUMBER}"
+				sh "docker run -d -p 8075:8075 azax1234/spring-boot-app:0.0.0.${BUILD_NUMBER}"
 			}
 			}
 		
