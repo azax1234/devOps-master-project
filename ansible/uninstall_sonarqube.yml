@@ -1,0 +1,52 @@
+---
+- hosts: all
+  become: true
+  vars:
+    postgres_user: sonarqube
+    postgres_db: sonarqube
+
+  tasks:
+    - name: Stop SonarQube service
+      systemd:
+        name: sonarqube
+        state: stopped
+        enabled: no
+      ignore_errors: yes
+
+    - name: Disable and remove SonarQube service file
+      file:
+        path: /etc/systemd/system/sonarqube.service
+        state: absent
+
+    - name: Reload systemd to apply changes
+      systemd:
+        daemon_reload: yes
+
+    - name: Remove SonarQube installation directory
+      file:
+        path: /opt/sonarqube
+        state: absent
+        recursive: yes
+
+    - name: Remove SonarQube archive file
+      file:
+        path: /opt/sonarqube.zip
+        state: absent
+
+    - name: Remove SonarQube user
+      user:
+        name: sonarqube
+        state: absent
+      ignore_errors: yes
+
+    - name: Drop SonarQube database
+      become_user: postgres
+      shell: |
+        psql -c "DROP DATABASE IF EXISTS {{ postgres_db }};"
+      ignore_errors: yes
+
+    - name: Drop SonarQube PostgreSQL user
+      become_user: postgres
+      shell: |
+        psql -c "DROP USER IF EXISTS {{ postgres_user }};"
+      ignore_errors: yes

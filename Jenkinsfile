@@ -58,6 +58,17 @@ pipeline {
 			}
 		}
 
+		stage('Static Code Analysis') {
+      		environment {
+        		SONAR_URL = "http://3.99.178.112:9000"
+      		}
+      		steps {
+        		withCredentials([string(credentialsId: 'sonar', variable: 'SONAR_AUTH_TOKEN')]) {
+          			sh 'cd devOps-master-project && mvn sonar:sonar -Dsonar.login=$SONAR_AUTH_TOKEN -Dsonar.host.url=${SONAR_URL}'
+        			}
+      			}
+    	}
+
 		 stage('Build Docker Image') {
 			steps {
 				//"docker build -t in28min/currency-exchange-devops:$env.BUILD_TAG"
