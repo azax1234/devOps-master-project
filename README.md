@@ -19,12 +19,19 @@ adduser command will prompt fro creating password
 
 
 sudo apt install unzip
-sudo adduser sonarqube 
+
+sudo adduser sonarqube
+
 wget https://binaries.sonarsource.com/Distribution/sonarqube/sonarqube-9.4.0.54424.zip
+
 unzip *
+
 chmod -R 755 sonarqube-9.4.0.54424
+
 chown -R sonarqube:sonarqube sonarqube-9.4.0.54424
+
 cd sonarqube-9.4.0.54424/bin/linux-x86-64/
+
 su sonarcube
 
 ./sonar.sh start
